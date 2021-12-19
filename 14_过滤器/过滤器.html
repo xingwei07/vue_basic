@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <script src="../js/vue.js"></script>
+        <script src="../js/dayjs.min.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <h2>格式化之后的时间</h2>
+            <!-- 使用计算属性实现 -->
+            <h3>当前时间：{{fmtTime}}</h3>
+            <!-- 使用methods实现 -->
+            <h3>当前时间：{{getFmtTime()}}</h3>
+            <!-- 使用过滤器实现 -->
+            <h3>当前时间：{{time | formatTime}}</h3>
+        </div>
+       
+
+        <script>
+            new Vue({
+                el:'#root',
+                data:{
+                    time:1636699631170
+                },
+                computed:{
+                    fmtTime(){
+                        return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+                    }
+                },
+                methods:{
+                    getFmtTime(){
+                        return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+                    }
+                },
+                filters:{
+                    formatTime(time){
+                        return dayjs(time).format('YYYY-MM-DD HH:mm:ss')
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

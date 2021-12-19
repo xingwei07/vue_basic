@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>example</title>
+        <script src="../js/vue.js"></script>
+        <style>
+            .basic{
+                height: 100px;
+                width: 500px;
+                border: solid 1px #000000;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root">
+            <p class="basic" :style="sty">test</p>
+        </div>
+        <script>
+            Vue.config.productionTip = false
+            
+            const vm = new Vue({
+                el:'#root',
+                data:{
+                    sty: {
+                        color:'red',
+                        fontSize:'30px',
+                        lineHeight:'100px',
+                        textAlign:'center'
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

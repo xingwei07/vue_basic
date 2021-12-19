@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>自定义指令</title>
+        <script src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <h2>{{name}}</h2>
+            <h2>当前的n值是：<span v-text="n"></span></h2>
+            <h2>放大10倍后的n值是：<span v-big="n"></span></h2>
+            <button @click="n++">点我n+1</button>
+            <input type="text" v-fbind:value="n">
+            <input type="text" v-model="num">
+        </div>
+
+        <script>
+            Vue.config.productionTip = false
+
+            new Vue({
+                el:'#root',
+                data:{
+                    name:'尚硅谷',
+                    n:1,
+                    num:''
+                },
+                directives:{
+                    big(element,binding){
+                        element.innerText = binding.value * 10
+                    },
+                    fbind(element,binding){
+                        element.value = binding.value
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

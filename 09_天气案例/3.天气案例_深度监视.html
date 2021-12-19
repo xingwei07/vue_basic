@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>天气案例_深度监视</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <h2>今天天气很{{info}}</h2>
+      <button @click="isHot = !isHot">切换天气</button>
+      <hr />
+      <span>a的值是：{{numbers.a}}</span><br /><br />
+      <button @click="numbers.a++">a的值加1</button><br /><br />
+      <span>b的值是：{{numbers.b}}</span><br /><br />
+      <button @click="numbers.b++">b的值加1</button>
+    </div>
+
+    <script>
+      Vue.config.productionTip = false
+
+      const vm = new Vue({
+        el: '#root',
+        data: {
+          isHot: true,
+          numbers: {
+            a: 1,
+            b: 2
+          }
+        },
+        computed: {
+          info() {
+            return this.isHot ? '炎热' : '凉爽'
+          }
+        },
+        watch: {
+          isHot: {
+            // 初始化时让handler调用一下
+            immediate: true,
+            // handler什么时候调用？当isHot发生改变时
+            handler(newValue, oldValue) {
+              console.log("newValue:",newValue,",oldValue:", oldValue)
+            }
+          },
+          /* // 监视多级结构中某个属性的变化
+          'numbers.a': {
+            handler(newValue, oldValue) {
+              console.log('a被改变了')
+            }
+          }, */
+          numbers: {
+            deep: true,
+            handler(newValue, oldValue) {
+              console.log('numbers被改变了')
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

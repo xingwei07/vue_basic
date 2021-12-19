@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>example</title>
+    </head>
+    <body>
+        <div id="root" onclick="send(this)">
+            <font>aaa</font><img src='http://www.baidu.com'>
+        </div>
+
+        <script>
+            function send(el) {
+                el.getElementsByTagName('img')[0].src = 'http://'
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>键盘事件</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <input type="text" placeholder="按下回车键提示输入" @keyup.13="showInfo"><br/>
+      <input type="text" placeholder="按下回车键提示输入" @keyup.enter="showInfo"><br/>
+      <input type="text" placeholder="按下回车键提示输入" @keydown.enter="showInfo"><br/>
+      <input type="text" placeholder="按下回车键提示输入" @keydown.huiche="showInfo">
+    </div>
+    <script>
+      Vue.config.productionTip = false
+      Vue.config.keyCodes.huiche = 13
+
+      new Vue({
+        el: '#root',
+        data: {
+
+        },
+        methods: {
+          showInfo(e) {
+            console.log(e.key) // 按键名字
+            // console.log(e.keyCode) // 按键编码
+            // console.log(e.target.value)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
