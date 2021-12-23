@@ -1,19 +1,19 @@
 <template>
-    <div>
-        <School></School>
-        <Studnet></Studnet>
-    </div>
+  <div>
+    <School></School>
+    <Studnet></Studnet>
+  </div>
 </template>
 
 <script>
-    import School from './School.vue'
-    import Student from './Student.vue'
+import School from './School'
+import Student from './Student'
 
-    export default {
-        name:'App',
-        components:{
-            School,
-            Student
-        }
-    }
+export default {
+  name: 'App',
+  components: {
+    School,
+    Student
+  }
+}
 </script>

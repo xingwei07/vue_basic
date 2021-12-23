@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>引出生命周期</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h2 :style="{opacity}">欢迎学习Vue</h2>
+  </div>
+
+  <script>
+    Vue.config.productionTip = false
+
+    new Vue({
+      el: '#root',
+      data: {
+        opacity: 1
+      },
+      // Vue完成模板的解析并把真实的DOM元素放入页面后（挂载完毕）调用mounted
+      mounted() {
+        setInterval(() => {
+          this.opacity -= 0.01
+          if (this.opacity <= 0) this.opacity = 1
+        }, 16)
+      }
+    })
+  </script>
+</body>
+
+</html>

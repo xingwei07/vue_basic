@@ -1,49 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Document</title>
-        <script src="../js/vue.js"></script>
-    </head>
-    <body>
-        <div id="root">
-            <form>
-                <label for="userName">账号：</label><input id="userName" type="text" autofocus="autofocus" v-model="account" /> <br /><br />
-                密码：<input type="password" v-model="password" /> <br /><br />
-                性别：男<input type="radio" name="sex" value="male" v-model="sex" />
-                    女<input type="radio" name="sex" value="female" v-model="sex" /> <br /><br />
-                爱好：抽烟<input type="checkbox" value="抽烟" v-model="hobby" />
-                    喝酒<input type="checkbox" value="喝酒" v-model="hobby" />
-                    烫头<input type="checkbox" value="烫头" v-model="hobby"> <br /><br />
-                <!-- 所属校区：<input type="text" placeholder="请选择校区" list="list" />
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <form>
+            <label for="userName">账号：</label>
+            <input id="userName" type="text" autofocus="autofocus" v-model.trim="userInfo.account" />
+            <br /><br />
+            密码：
+            <input type="password" v-model="userInfo.password" /> <br /><br />
+            年齡：
+            <input type="number" v-model.number="userInfo.age">
+            性别：
+            男<input type="radio" name="sex" value="male" v-model="userInfo.sex" />
+            女<input type="radio" name="sex" value="female" v-model="userInfo.sex" /><br /><br />
+            爱好：
+            抽烟<input type="checkbox" value="抽烟" v-model="userInfo.hobby" />
+            喝酒<input type="checkbox" value="喝酒" v-model="userInfo.hobby" />
+            烫头<input type="checkbox" value="烫头" v-model="userInfo.hobby" /><br /><br />
+            <!-- 所属校区：<input type="text" placeholder="请选择校区" list="list" />
                 <datalist id="list">
                     <option>北京</option>
                     <option>上海</option>
                 </datalist> <br/><br/> -->
-                所属校区：<select>
-                            <option value="">请选择校区</option>
-                            <option value="beijing">北京</option>
-                            <option value="shanghai">上海</option>
-                            <option value="shenzhen">深圳</option>
-                            <option value="wuhan">武汉</option>
-                        </select> <br/><br/>
+            所属校区：<select v-model="userInfo.city">
+                <option value="">请选择校区</option>
+                <option value="beijing">北京</option>
+                <option value="shanghai">上海</option>
+                <option value="shenzhen">深圳</option>
+                <option value="wuhan">武汉</option>
+            </select>
+            <br /><br />
+            其他信息：
+            <textarea v-model.lazy="userInfo.other" cols="30" rows="5"></textarea><br /><br />
+            <input type="checkbox" v-model="userInfo.agree">阅读并接受<a href="#">用户协议</a><br /><br />
+            <button @click.prevent="demo">提交</button>
+        </form>
+    </div>
 
-            </form>
-        </div>
-        
+    <script>
+        Vue.config.productionTip = false;
 
-        <script>
-            Vue.config.productionTip = false
-
-            const vm = new Vue({
-                el:'#root',
-                data: {
-                    account:'',
-                    password:'',
-                    sex:'female',
-                    hobby:[]
+        const vm = new Vue({
+            el: "#root",
+            data: {
+                userInfo: {
+                    account: "",
+                    password: "",
+                    age: '',
+                    sex: "female",
+                    hobby: [],
+                    city: "",
+                    other: '',
+                    agree: ''
                 }
-            })
-        </script>
-    </body>
+            },
+            methods: {
+                demo() {
+                    console.log(JSON.stringify(this.userInfo))
+                }
+            }
+        });
+    </script>
+</body>
+
 </html>

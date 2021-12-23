@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>v-cloak指令</title>
+  <script src="../js/vue.js"></script>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root" v-cloak>
+    {{name}}
+  </div>
+
+  <script>
+    setTimeout(function () {
+      Vue.config.productionTip = false
+
+      new Vue({
+        el: '#root',
+        data: {
+          name: '尚硅谷'
+        }
+      })
+    }, 3000)
+  </script>
+</body>
+
+</html>

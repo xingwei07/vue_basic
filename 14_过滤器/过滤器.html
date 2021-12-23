@@ -1,45 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Document</title>
-        <script src="../js/vue.js"></script>
-        <script src="../js/dayjs.min.js"></script>
-    </head>
-    <body>
-        <div id="root">
-            <h2>格式化之后的时间</h2>
-            <!-- 使用计算属性实现 -->
-            <h3>当前时间：{{fmtTime}}</h3>
-            <!-- 使用methods实现 -->
-            <h3>当前时间：{{getFmtTime()}}</h3>
-            <!-- 使用过滤器实现 -->
-            <h3>当前时间：{{time | formatTime}}</h3>
-        </div>
-       
 
-        <script>
-            new Vue({
-                el:'#root',
-                data:{
-                    time:1636699631170
-                },
-                computed:{
-                    fmtTime(){
-                        return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
-                    }
-                },
-                methods:{
-                    getFmtTime(){
-                        return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
-                    }
-                },
-                filters:{
-                    formatTime(time){
-                        return dayjs(time).format('YYYY-MM-DD HH:mm:ss')
-                    }
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/dayjs.min.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2>格式化之后的时间</h2>
+        <!-- 使用计算属性实现 -->
+        <h3>当前时间：{{fmtTime}}</h3>
+        <!-- 使用methods实现 -->
+        <h3>当前时间：{{getFmtTime()}}</h3>
+        <!-- 使用过滤器实现 -->
+        <h3>当前时间：{{time | formatTime}}</h3>
+        <!-- 使用过滤器实现(传参) -->
+        <h3>当前时间：{{time | formatTime('YYYY_MM_DD')}}</h3>
+        <!-- 使用过滤器实现() -->
+        <h3>当前时间：{{time | formatTime | mySlice}}</h3>
+    </div>
+
+    <div id="root2">
+        {{name | mySlice}}
+        <h2 :x="name | mySlice">ss</h2>
+    </div>
+
+
+    <script>
+        Vue.config.productionTip = false
+
+        // 全局过滤器
+        Vue.filter('mySlice', function (value) {
+            return value.slice(0, 4)
+        })
+
+        new Vue({
+            el: '#root',
+            data: {
+                time: 1636699631170
+            },
+            computed: {
+                fmtTime() {
+                    return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
                 }
-            })
-        </script>
-    </body>
+            },
+            methods: {
+                getFmtTime() {
+                    return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+                }
+            },
+            // 局部过滤器
+            filters: {
+                formatTime(time, str = 'YYYY-MM-DD HH:mm:ss') {
+                    return dayjs(time).format(str)
+                },
+                // mySlice(value) {
+                //     return value.slice(0, 4)
+                // }
+            }
+        })
+
+        new Vue({
+            el: '#root2',
+            data: {
+                name: 'hello'
+            }
+        })
+    </script>
+</body>
+
 </html>

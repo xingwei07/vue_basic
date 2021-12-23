@@ -1,47 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>天气案例_监视属性</title>
-    <script src="../js/vue.js"></script>
-  </head>
-  <body>
-    <div id="root">
-      <h2>今天天气很{{info}}</h2>
-      <button @click="isHot = !isHot">切换天气</button>
-    </div>
 
-    <script>
-      Vue.config.productionTip = false
+<head>
+  <meta charset="UTF-8">
+  <title>天气案例_监视属性</title>
+  <script src="../js/vue.js"></script>
+</head>
 
-      const vm = new Vue({
-        el: '#root',
-        data: {
-          isHot: true
-        },
-        computed: {
-          info() {
-            return this.isHot ? '炎热' : '凉爽'
-          }
-        },
-        // watch: {
-        //   isHot: {
-        //     // 初始化时让handler调用一下
-        //     immediate: true,
-        //     // handler什么时候调用？当isHot发生改变时
-        //     handler(newValue, oldValue) {
-        //       console.log("newValue:",newValue,",oldValue:", oldValue)
-        //     }
-        //   }
-        // }
-      })
+<body>
+  <div id="root">
+    <h2>今天天气很{{info}}</h2>
+    <button @click="isHot = !isHot">切换天气</button>
+  </div>
 
-      vm.$watch('isHot', {
-        immediate: true,
-        handler: function(newValue, oldValue) {
-          console.log('newValue:', newValue, ',oldValue:', oldValue)
+  <script>
+    Vue.config.productionTip = false
+
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        isHot: true
+      },
+      computed: {
+        info() {
+          return this.isHot ? '炎热' : '凉爽'
         }
-      })
-    </script>
-  </body>
+      },
+      // watch: {
+      //   isHot: {
+      //     // 初始化时让handler调用一下
+      //     immediate: true,
+      //     // handler什么时候调用？当isHot发生改变时
+      //     handler(newValue, oldValue) {
+      //       console.log("newValue:",newValue,",oldValue:", oldValue)
+      //     }
+      //   }
+      // }
+    })
+
+    vm.$watch('isHot', {
+      immediate: true,
+      handler: function (newValue, oldValue) {
+        console.log('newValue:', newValue, ',oldValue:', oldValue)
+      }
+    })
+  </script>
+</body>
+
 </html>

