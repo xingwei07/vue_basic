@@ -213,6 +213,8 @@ Vue 中有两种数据绑定的方式：
         通过 Object.defineProperty()把 data 对象中所有属性添加到 vm 上。
         在 getter/setter 内部去操作（读/写）data 中对应的属性。
 
+![avatar](image/数据代理图示.png)
+
 ## 7. 事件的基本使用
 
 > 1. 使用 v-on:xxx 或 @xxx 绑定事件，其中 xxx 是事件名；
