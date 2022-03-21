@@ -810,3 +810,4 @@ console.log(school.prototype.__proto__ === vm.__proto__); // true
 ```
 
 ![avatar](image/Vue与VueComponent的关系.png)
+ 
